@@ -3,50 +3,54 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/htc/ville/BoardConfigVendor.mk
 
-TARGET_NO_BOOTLOADER := true
+# Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := ville
+TARGET_NO_BOOTLOADER := true
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8960
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno225
-
-# Flags
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60 -DQCOM_HARDWARE
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
 # Architecture
+TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_SMP := true
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_VARIANT_CPU := cortex-a9
 ARCH_ARM_HAVE_TLS_REGISTER := true
+TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
 
-
-BOARD_KERNEL_CMDLINE :=  console=ttyHSL0,115200,n8 androidboot.hardware=ville
-BOARD_KERNEL_BASE :=  0x80400000
-BOARD_FORCE_RAMDISK_ADDRESS := 0x81800000
-BOARD_KERNEL_PAGESIZE := 4096
-
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01000000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00fffe00
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x67fffc00
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_FLASH_BLOCK_SIZE := 131072
-
+# Kernel
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom
+BOARD_KERNEL_BASE := 0x80400000
+BOARD_KERNEL_PAGESIZE := 2048
 TARGET_PREBUILT_KERNEL := device/htc/ville/kernel
 
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
+# for jellybean branch of CM use BOARD_FORCE_RAMDISK_ADDRESS
+# for cm-10.1 branch of CM use BOARD_MKBOOTIMG_ARGS
+BOARD_FORCE_RAMDISK_ADDRESS := 0x81800000
+# BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01400000
 
-# Recovery:Start
+# Filesystem (cat /proc/emmc)
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16776704
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1744829440
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 2550136320
+BOARD_FLASH_BLOCK_SIZE := 131072
 
-# Use this flag if the board has a ext4 partition larger than 2gb
-BOARD_HAS_LARGE_FILESYSTEM := true
+# Use power button as select in recovery
+BOARD_HAS_NO_SELECT_BUTTON := true
 
-# Recovery: set depending on recovery being built for. (CWM or TWRP)
-#           both init scripts can be found in the recovery folder
-TARGET_RECOVERY_INITRC := device/htc/ville/recovery/init-twrp.rc
+# Vold
+BOARD_VOLD_MAX_PARTITIONS := 36
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
-# TWRP specific build flags
+# TWRP
 DEVICE_RESOLUTION := 540x960
 TW_FLASH_FROM_STORAGE := true
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_INCLUDE_DUMLOCK := true
+TW_INCLUDE_JB_CRYPTO := true
