@@ -46,3 +46,6 @@ service detect_key /sbin/detect_key
 
 service chargeled /sbin/chargeled
     disabled
+
+service choosefstab /sbin/ville-fstab-swap.sh
+    oneshot
