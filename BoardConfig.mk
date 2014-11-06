@@ -64,7 +64,10 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Vold
 BOARD_VOLD_MAX_PARTITIONS := 36
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+# lun files are located at /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+# but we need to add/remove symlinks to them based on whether there are one
+# or two drives available to UMS. This is handled in init.
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /lun%d/file
 
 # Charge mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
