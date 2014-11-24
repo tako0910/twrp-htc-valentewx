@@ -11,7 +11,7 @@ $(call inherit-product, device/htc/valentewx/device.mk)
 PRODUCT_DEVICE := valentewx
 PRODUCT_NAME := cm_valentewx
 PRODUCT_BRAND := htc
-PRODUCT_MODEL := One S
+PRODUCT_MODEL := J
 PRODUCT_MANUFACTURER := HTC
 
 PRODUCT_BUILD_PROP_OVERRIDES += \

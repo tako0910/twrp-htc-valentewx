@@ -1,6 +1,6 @@
-**TWRP - HTC One S**
+**TWRP - HTC J**
 
-This is a recovery-only device tree for the HTC One S (htc valentewx).
+This is a recovery-only device tree for the HTC J (htc valentewx).
 
 **Quick build instructions:**
 
