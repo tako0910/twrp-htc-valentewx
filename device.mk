@@ -3,11 +3,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/htc/ville/ville-vendor.mk)
+$(call inherit-product-if-exists, vendor/htc/valentewx/valentewx-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/htc/ville/overlay
+DEVICE_PACKAGE_OVERLAYS += device/htc/valentewx/overlay
 
-LOCAL_PATH := device/htc/ville
+LOCAL_PATH := device/htc/valentewx
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else

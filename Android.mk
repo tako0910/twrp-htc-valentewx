@@ -14,7 +14,7 @@
 # limitations under the License.
 
 ifeq ($(RECOVERY_VARIANT), twrp)
-ifeq ($(TARGET_DEVICE), ville)
+ifeq ($(TARGET_DEVICE), valentewx)
 
 LOCAL_PATH := $(call my-dir)
 include $(call first-makefiles-under, $(LOCAL_PATH))

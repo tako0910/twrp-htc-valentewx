@@ -1,10 +1,10 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/htc/ville/BoardConfigVendor.mk
+-include vendor/htc/valentewx/BoardConfigVendor.mk
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := ville
+TARGET_BOOTLOADER_BOARD_NAME := valentewx
 TARGET_NO_BOOTLOADER := true
 
 # Platform
@@ -23,7 +23,7 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80400000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := ville_defconfig
+TARGET_KERNEL_CONFIG := valentewx_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/msm8960
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01700000
 
@@ -43,7 +43,7 @@ USE_OPENGL_RENDERER := true
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
-BOARD_EGL_CFG := device/htc/ville/configs/egl.cfg
+BOARD_EGL_CFG := device/htc/valentewx/configs/egl.cfg
 
 # Power
 TARGET_POWERHAL_VARIANT := cm
@@ -73,7 +73,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /lun%d/file
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
 
 # SELinux
-BOARD_SEPOLICY_DIRS += device/htc/ville/sepolicy
+BOARD_SEPOLICY_DIRS += device/htc/valentewx/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     app.te \
